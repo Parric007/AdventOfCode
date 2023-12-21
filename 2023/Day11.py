@@ -1,10 +1,9 @@
 from itertools import combinations
 
-ll = [x for x in open("Day11Input.txt").read().strip().split("\n\n")][0]
+ll = [x for x in open("Day11Input.txt").read().strip().split("\n\n")]
 
-matrix = ll.split("\n")
+matrix = ll[0].split("\n")
 newMatrix = []
-finalMatrix = []
 
 for i in range(len(matrix)):
     matrix[i] = list(matrix[i])
@@ -12,16 +11,7 @@ for i in range(len(matrix)):
 emptyRows = []
 emptyCols = []
 positionsGalaxies = []
-adjustedPos = set()
-
-for i in range(len(matrix)):
-    if "#" not in matrix[i]:
-        newMatrix.append(["."*140])
-        newMatrix.append(matrix[i])
-    else:
-        newMatrix.append(matrix[i])
-
-print(newMatrix)
+expansionNumber = 10
 
 for i in range(len(matrix[0])):
     colIsEmpty = True
@@ -32,12 +22,23 @@ for i in range(len(matrix[0])):
     if colIsEmpty:
         emptyCols.append(i)
 
-print(emptyCols)
 
+for i in range(len(matrix)):
+    if "#" not in matrix[i]:
+        dotArr = []
+        for j in range(len(newMatrix[0])):
+            dotArr.append(".")
+        newMatrix.extend([dotArr])
+        newMatrix.append(matrix[i])
+    else:
+        newMatrix.append(matrix[i])
+
+
+cnt = 0
 for index in emptyCols:
     for line in newMatrix:
-        line.insert(index, ".")
-
+        line.insert(index + cnt, ".")
+    cnt += 1
 
 result1 = 0
 
@@ -46,10 +47,11 @@ for i in range(len(newMatrix)):
         if newMatrix[i][j] == "#":
             positionsGalaxies.append((i, j))
 
-res = list(combinations(positionsGalaxies, 2))
+#positionsGalaxies = [(x, y) for x in range(len(newMatrix[0])) for y in range(len(newMatrix)) if newMatrix[y][x] == '#']
 
-for val in res:
-    result1 += abs(val[0][0]-val[1][0]) + abs(val[0][1]-val[1][1])
+for i, galaxy1 in enumerate(positionsGalaxies):
+    for galaxy2 in positionsGalaxies[i + 1:]:
+        result1 += abs(galaxy1[0] - galaxy2[0]) + abs(galaxy1[1] - galaxy2[1])
 
 print(result1)
 #9 648 398
