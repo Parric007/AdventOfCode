@@ -3,7 +3,7 @@ package main
 import kotlin.time.measureTime
 
 fun main() {
-    val daysArray: List<Day> = listOf(Day1(), Day2())
+    val daysArray: List<Day> = listOf(Day1(), Day2(), Day3())
 
     for (i in 1..daysArray.size)  {
         var dayOne: Long
