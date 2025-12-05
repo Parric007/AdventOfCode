@@ -3,9 +3,9 @@ package main
 import java.io.File
 import kotlin.math.absoluteValue
 
-class Day1(){
+class Day1() : Day{
 
-    fun processTextInputPartOne(filePath: String): String {
+    override fun processTextInputPartOne(filePath: String): Long {
         var result = 0
 
         var safePointer = 50
@@ -22,10 +22,10 @@ class Day1(){
             }
         }
 
-        return result.toString()
+        return result.toLong()
     }
 
-    fun processTextInputPartTwo(filePath: String): String {
+    override fun processTextInputPartTwo(filePath: String): Long {
         var result = 0
         var safePointer = 50
         var difference: Int
@@ -37,27 +37,25 @@ class Day1(){
             } else {
                 line.drop(1).toInt()
             }
-            val toAdd = difference.absoluteValue / 100
 
-            result += toAdd
+            result += difference.absoluteValue / 100
+            var newSafePointer = (safePointer + difference % 100)
 
-            difference %= 100
-
-            var dontCountZero = false
-
-            if (difference < 0 && safePointer + difference <= 0) {
+            if (safePointer != 0)
+            if (newSafePointer < 0) {
                 result++
-                dontCountZero = true
-            } else if (difference + safePointer >= 100 && difference > 0) {
+                newSafePointer += 100
+            } else if (newSafePointer > 100) {
                 result++
-                dontCountZero = true
+                newSafePointer -= 100
             }
 
-            safePointer = (safePointer + difference).mod(100)
+            newSafePointer = (newSafePointer + 100000) % 100
+            if (newSafePointer == 0) result++
 
-            if (!dontCountZero && safePointer == 0 && toAdd == 0) result++
+            safePointer = newSafePointer
         }
 
-        return result.toString()
+        return result.toLong()
     }
 }
