@@ -7,7 +7,7 @@ import kotlin.time.Duration.Companion.seconds
 import kotlin.time.measureTime
 
 fun main() {
-    val daysArray: List<Day> = listOf(Day1(), Day2(), Day3(), Day4(), Day5())
+    val daysArray: List<Day> = listOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6())
 
     val results = File("./README.md")
     results.delete()
@@ -40,7 +40,7 @@ fun main() {
                     "Result: $partTwo \\\n" +
                     "Time: $timeForPart2\n\n")
             sumTime += timeForPart2
-        } catch (ex: Error) {
+        } catch (ex: Throwable) {
             println("Error on day $i: $ex")
         }
     }
