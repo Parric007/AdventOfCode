@@ -4,21 +4,31 @@ By Liam
 ### Part one
 
 Result: 1506483 \
-Time: 16.156500ms
+Time: 12.227500ms
 ### Part two
 
 Result: 23126924 \
-Time: 7.781700ms
+Time: 4.244ms
 
 ## Day 2
 ### Part one
 
 Result: 663 \
-Time: 13.828500ms
+Time: 8.881800ms
 ### Part two
 
 Result: 692 \
-Time: 8.592ms
+Time: 5.706700ms
+
+## Day 3
+### Part one
+
+Result: 188192787 \
+Time: 20.273100ms
+### Part two
+
+Result: 113965544 \
+Time: 5.926100ms
 
 Total time:
-46.358700ms
+57.259200ms
