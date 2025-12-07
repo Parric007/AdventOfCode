@@ -4,61 +4,71 @@ By Liam
 ### Part one
 
 Result: 1150 \
-Time: 22.297500ms
+Time: 18.126100ms
 ### Part two
 
 Result: 6738 \
-Time: 4.316ms
+Time: 2.016200ms
 
 ## Day 2
 ### Part one
 
 Result: 18700015741 \
-Time: 87.655100ms
+Time: 68.772800ms
 ### Part two
 
 Result: 20077272987 \
-Time: 633.776ms
+Time: 615.034900ms
 
 ## Day 3
 ### Part one
 
 Result: 17087 \
-Time: 1.597700ms
+Time: 1.706600ms
 ### Part two
 
 Result: 169019504359949 \
-Time: 1.203400ms
+Time: 963.8us
 
 ## Day 4
 ### Part one
 
 Result: 1569 \
-Time: 4.725ms
+Time: 3.433100ms
 ### Part two
 
 Result: 9280 \
-Time: 18.948500ms
+Time: 18.085100ms
 
 ## Day 5
 ### Part one
 
 Result: 782 \
-Time: 10.925900ms
+Time: 10.697700ms
 ### Part two
 
 Result: 353863745078671 \
-Time: 3.891700ms
+Time: 4.215800ms
 
 ## Day 6
 ### Part one
 
 Result: 5877594983578 \
-Time: 4.979700ms
+Time: 4.395ms
 ### Part two
 
 Result: 11159825706149 \
-Time: 6.410100ms
+Time: 7.703500ms
+
+## Day 7
+### Part one
+
+Result: 1626 \
+Time: 510.9us
+### Part two
+
+Result: 48989920237096 \
+Time: 547.3us
 
 Total time:
-800.726600ms
+756.208800ms
