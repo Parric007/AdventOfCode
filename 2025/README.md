@@ -4,81 +4,91 @@ By Liam
 ### Part one
 
 Result: 1150 \
-Time: 18.714500ms
+Time: 16.693600ms
 ### Part two
 
 Result: 6738 \
-Time: 2.085300ms
+Time: 2.318400ms
 
 ## Day 2
 ### Part one
 
 Result: 18700015741 \
-Time: 67.915200ms
+Time: 72.246800ms
 ### Part two
 
 Result: 20077272987 \
-Time: 618.795500ms
+Time: 630.281500ms
 
 ## Day 3
 ### Part one
 
 Result: 17087 \
-Time: 1.620900ms
+Time: 2.143500ms
 ### Part two
 
 Result: 169019504359949 \
-Time: 976.6us
+Time: 1.500400ms
 
 ## Day 4
 ### Part one
 
 Result: 1569 \
-Time: 3.361500ms
+Time: 3.814200ms
 ### Part two
 
 Result: 9280 \
-Time: 18.437400ms
+Time: 17.645300ms
 
 ## Day 5
 ### Part one
 
 Result: 782 \
-Time: 11.107700ms
+Time: 11.760300ms
 ### Part two
 
 Result: 353863745078671 \
-Time: 3.942100ms
+Time: 4.311500ms
 
 ## Day 6
 ### Part one
 
 Result: 5877594983578 \
-Time: 5.367200ms
+Time: 5.208500ms
 ### Part two
 
 Result: 11159825706149 \
-Time: 6.003800ms
+Time: 7.366600ms
 
 ## Day 7
 ### Part one
 
 Result: 1626 \
-Time: 490.2us
+Time: 499.1us
 ### Part two
 
 Result: 48989920237096 \
-Time: 586.5us
+Time: 537.1us
 
 ## Day 8
 ### Part one
 
 Result: 330786 \
-Time: 42.883100ms
+Time: 43.502700ms
 ### Part two
 
 Result: 3276581616 \
-Time: 38.959200ms
+Time: 44.727300ms
+
+## Day 9
+### Part one
+
+Result: 4781546175 \
+Time: 6.926900ms
+### Part two
+
+Result: 1573359081 \
+Time: 215.822200ms
 
 Total time:
-841.246700ms
+1.087305900s
