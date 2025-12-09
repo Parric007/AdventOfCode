@@ -69,38 +69,39 @@ class Day8: Day {
         val x2 = coordinates[j].x
         return minOf(x1, x2).toLong() * maxOf(x1, x2).toLong()
     }
-}
 
-data class Point(val x: Int, val y: Int, val z: Int) {
-    // Because why should we calculate the square root if we don't have to ;)
-    fun squaredDistanceTo(other: Point): Long {
-        val dx = (x - other.x).toLong()
-        val dy = (y - other.y).toLong()
-        val dz = (z - other.z).toLong()
-        return dx * dx + dy * dy + dz * dz
-    }
-}
-
-class UnionFind(n: Int) {
-    private val parent = IntArray(n) { it }
-    private val size = IntArray(n) { 1 }
-
-    fun find(a: Int): Int {
-        var x = a
-        while (parent[x] != x) {
-            parent[x] = parent[parent[x]]
-            x = parent[x]
+    data class Point(val x: Int, val y: Int, val z: Int) {
+        // Because why should we calculate the square root if we don't have to ;)
+        fun squaredDistanceTo(other: Point): Long {
+            val dx = (x - other.x).toLong()
+            val dy = (y - other.y).toLong()
+            val dz = (z - other.z).toLong()
+            return dx * dx + dy * dy + dz * dz
         }
-        return x
     }
 
-    fun union(a: Int, b: Int): Boolean {
-        var ra = find(a)
-        var rb = find(b)
-        if (ra == rb) return false
-        if (size[ra] < size[rb]) { val tmp = ra; ra = rb; rb = tmp }
-        parent[rb] = ra
-        size[ra] += size[rb]
-        return true
+    class UnionFind(n: Int) {
+        private val parent = IntArray(n) { it }
+        private val size = IntArray(n) { 1 }
+
+        fun find(a: Int): Int {
+            var x = a
+            while (parent[x] != x) {
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            }
+            return x
+        }
+
+        fun union(a: Int, b: Int): Boolean {
+            var ra = find(a)
+            var rb = find(b)
+            if (ra == rb) return false
+            if (size[ra] < size[rb]) { val tmp = ra; ra = rb; rb = tmp }
+            parent[rb] = ra
+            size[ra] += size[rb]
+            return true
+        }
     }
 }
+
