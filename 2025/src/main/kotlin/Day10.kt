@@ -1,6 +1,9 @@
 package main
 
 import java.io.File
+import com.google.ortools.Loader
+import com.google.ortools.linearsolver.MPConstraint
+import com.google.ortools.linearsolver.MPSolver
 
 class Day10: Day {
     override fun processTextInputPartOne(filePath: String): Long {
@@ -35,13 +38,23 @@ class Day10: Day {
             if (split != null) {
                 val goal = split.groups[3]?.value!!
                 val buttonOptions = split.groups[2]?.value!!
-                val targetValues = goal.substring(1, goal.lastIndex).split(",").map { it.toInt() }
+                val targetValues = goal.substring(1, goal.lastIndex).split(",").map { it.toInt() }.toIntArray()
                 val terms = buttonOptions.split(" ").map { s ->
                     return@map s.substring(1, s.lastIndex).split(",").map { it.toInt() }.toList()
                 }
 
-                //TODO: do linear solving with targetValues + terms
+                val listForMatrices = List(terms.size) {IntArray(targetValues.size)}
 
+                terms.forEachIndexed { i, term ->
+                    term.forEach { j ->
+                        listForMatrices[i][j] = 1
+                    }
+                }
+                val solutions = solveMinSumInteger(transpose(listForMatrices), targetValues)
+
+                if (solutions != null) {
+                    result += solutions.sum()
+                }
             }
         }
 
@@ -103,6 +116,51 @@ class Day10: Day {
                 currentMask = currentMask xor button
             }
             return currentMask == goalState
+        }
+    }
+
+    private fun transpose(list: List<IntArray>): List<IntArray> {
+        val rows = list.size
+        val cols = list[0].size
+        return List(cols) { c ->
+            IntArray(rows) { r -> list[r][c] }
+        }
+    }
+
+    private fun solveMinSumInteger(
+        listForMatrices: List<IntArray>,
+        targetValues: IntArray
+    ): LongArray? {
+        Loader.loadNativeLibraries()
+
+        val m = listForMatrices.size
+        val n = listForMatrices[0].size
+        val solver = MPSolver.createSolver("CBC_MIXED_INTEGER_PROGRAMMING")
+            ?: throw RuntimeException("Could not create solver (native libraries missing?)")
+
+        val upperBound = 1_000.0  // adjust if you have a tighter bound
+        val vars = Array(n) { i ->
+            solver.makeIntVar(0.0, upperBound, "n_$i")
+        }
+
+        for (r in 0 until m) {
+            val coefficients = listForMatrices[r]
+            val constraint: MPConstraint = solver.makeConstraint(targetValues[r].toDouble(), targetValues[r].toDouble(), "eq_$r")
+            for (j in 0 until n) {
+                val a = coefficients[j].toDouble()
+                if (a != 0.0) constraint.setCoefficient(vars[j], a)
+            }
+        }
+        val objective = solver.objective()
+        for (j in 0 until n) objective.setCoefficient(vars[j], 1.0)
+        objective.setMinimization()
+
+        val resultStatus = solver.solve()
+
+        return if (resultStatus == MPSolver.ResultStatus.OPTIMAL || resultStatus == MPSolver.ResultStatus.FEASIBLE) {
+            LongArray(n) { j -> Math.round(vars[j].solutionValue()) }
+        } else {
+            null
         }
     }
 }
