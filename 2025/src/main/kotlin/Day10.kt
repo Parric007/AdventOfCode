@@ -1,15 +1,12 @@
 package main
 
 import java.io.File
-import com.google.ortools.Loader
-import com.google.ortools.linearsolver.MPConstraint
-import com.google.ortools.linearsolver.MPSolver
+import kotlin.math.min
 
 class Day10: Day {
     override fun processTextInputPartOne(filePath: String): Long {
         val machineList = File(filePath).readLines()
         var result = 0L
-
         val machineRegex = Regex("""\[([.|#]*)]\s(.*)\s(\{[\d,]+})""")
 
         for (machineString in machineList) {
@@ -27,37 +24,68 @@ class Day10: Day {
     }
 
     override fun processTextInputPartTwo(filePath: String): Long {
-        val machineList = File(filePath).readLines()
+        val lines = File(filePath).readLines().map { it.trim() }
         var result = 0L
 
-        val machineRegex = Regex("""\[([.|#]*)]\s(.*)\s(\{[\d,]+})""")
+        for (line in lines) {
+            val parts = line.split(" ")
+            val rawCoefficients = parts.drop(1).dropLast(1)
+            val rawGoal = parts.last()
+            val goal = rawGoal.substring(1, rawGoal.length - 1).split(",").map { it.toInt() }
+            val nJoltages = goal.size
+            val buttons: List<List<Int>> = rawCoefficients.map { r ->
+                r.substring(1, r.length - 1).split(",").map { it.toInt() }
+            }
+            val nButtons = buttons.size
 
-        for (machineString in machineList) {
-            val split = machineRegex.find(machineString)
-
-            if (split != null) {
-                val goal = split.groups[3]?.value!!
-                val buttonOptions = split.groups[2]?.value!!
-                val targetValues = goal.substring(1, goal.lastIndex).split(",").map { it.toInt() }.toIntArray()
-                val terms = buttonOptions.split(" ").map { s ->
-                    return@map s.substring(1, s.lastIndex).split(",").map { it.toInt() }.toList()
-                }
-
-                val listForMatrices = List(terms.size) {IntArray(targetValues.size)}
-
-                terms.forEachIndexed { i, term ->
-                    term.forEach { j ->
-                        listForMatrices[i][j] = 1
+            val coefficients: List<IntArray> = buttons.map { b ->
+                IntArray(nJoltages) { idx -> if (idx in b) 1 else 0 }
+            }
+            val patternCosts = mutableMapOf<List<Int>, MutableMap<IntArray, Int>>()
+            val totalCombinations = 1 shl nButtons
+            for (mask in 0 until totalCombinations) {
+                var cost = 0
+                val pattern = IntArray(nJoltages) { 0 }
+                for (btn in 0 until nButtons) {
+                    if ((mask shr btn) and 1 == 1) {
+                        cost++
+                        for (i in 0 until nJoltages) {
+                            pattern[i] += coefficients[btn][i]
+                        }
                     }
                 }
-                val solutions = solveMinSumInteger(transpose(listForMatrices), targetValues)
-
-                if (solutions != null) {
-                    result += solutions.sum()
-                }
+                val parity = pattern.map { it % 2 }
+                patternCosts.computeIfAbsent(parity) { mutableMapOf() }.putIfAbsent(pattern, cost)
             }
-        }
 
+            data class GoalKey(val arr: IntArray) {
+                override fun equals(other: Any?) = other is GoalKey && arr.contentEquals(other.arr)
+                override fun hashCode() = arr.contentHashCode()
+            }
+
+            val memo = mutableMapOf<GoalKey, Long>()
+
+            fun solve(goalState: IntArray): Long {
+                val key = GoalKey(goalState)
+                memo[key]?.let { return it }
+                if (goalState.all { it == 0 }) return 0L
+
+                val parityKey = goalState.map { it % 2 }
+                var answer = 1_000_000_000L
+
+                for ((pattern, patternCost) in patternCosts[parityKey] ?: emptyMap()) {
+                    if (pattern.indices.all { i -> pattern[i] <= goalState[i] }) {
+                        val newGoal = IntArray(goalState.size) { i -> (goalState[i] - pattern[i]) / 2 }
+                        answer = min(answer, patternCost.toLong() + 2L * solve(newGoal))
+                    }
+                }
+
+                memo[key] = answer
+                return answer
+            }
+
+            result += solve(goal.toIntArray())
+        }
         return result
     }
 
@@ -116,51 +144,6 @@ class Day10: Day {
                 currentMask = currentMask xor button
             }
             return currentMask == goalState
-        }
-    }
-
-    private fun transpose(list: List<IntArray>): List<IntArray> {
-        val rows = list.size
-        val cols = list[0].size
-        return List(cols) { c ->
-            IntArray(rows) { r -> list[r][c] }
-        }
-    }
-
-    private fun solveMinSumInteger(
-        listForMatrices: List<IntArray>,
-        targetValues: IntArray
-    ): LongArray? {
-        Loader.loadNativeLibraries()
-
-        val m = listForMatrices.size
-        val n = listForMatrices[0].size
-        val solver = MPSolver.createSolver("CBC_MIXED_INTEGER_PROGRAMMING")
-            ?: throw RuntimeException("Could not create solver (native libraries missing?)")
-
-        val upperBound = 1_000.0  // adjust if you have a tighter bound
-        val vars = Array(n) { i ->
-            solver.makeIntVar(0.0, upperBound, "n_$i")
-        }
-
-        for (r in 0 until m) {
-            val coefficients = listForMatrices[r]
-            val constraint: MPConstraint = solver.makeConstraint(targetValues[r].toDouble(), targetValues[r].toDouble(), "eq_$r")
-            for (j in 0 until n) {
-                val a = coefficients[j].toDouble()
-                if (a != 0.0) constraint.setCoefficient(vars[j], a)
-            }
-        }
-        val objective = solver.objective()
-        for (j in 0 until n) objective.setCoefficient(vars[j], 1.0)
-        objective.setMinimization()
-
-        val resultStatus = solver.solve()
-
-        return if (resultStatus == MPSolver.ResultStatus.OPTIMAL || resultStatus == MPSolver.ResultStatus.FEASIBLE) {
-            LongArray(n) { j -> Math.round(vars[j].solutionValue()) }
-        } else {
-            null
         }
     }
 }
