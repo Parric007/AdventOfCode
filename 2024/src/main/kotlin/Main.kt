@@ -3,50 +3,65 @@ package main
 import java.io.File
 import java.io.OutputStreamWriter
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.seconds
 import kotlin.time.measureTime
 
 fun main() {
-    val daysArray: List<Day> = listOf(Day1(), Day2(), Day3(), Day4(), Day5())
+    val daysArray: List<Day> = listOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6())
 
     val results = File("./README.md")
+    val averageNum = 1000
     results.delete()
     results.createNewFile()
     val writer = results.writer()
     createHeader(writer)
 
-    var sumTime: Duration = 0.seconds
-
-    for (i in 1..daysArray.size)  {
+    var sumTime: Duration = Duration.ZERO
+    for ((index, day) in daysArray.withIndex())  {
+        val dayNumber = index + 1
         try {
-            var partOne: Long
-            val timeForPart1 = measureTime {
-                partOne = daysArray[i - 1].processTextInputPartOne("./inputFiles/Day${i}.txt")
+            var resultPart1: Long = 0
+            var totalTimePart1 = Duration.ZERO
+
+            repeat (averageNum) {
+                totalTimePart1 += measureTime {
+                    resultPart1 = day.processTextInputPartOne("./inputFiles/Day$dayNumber.txt")
+                }
             }
-            println("Day $i, Part one: $partOne in $timeForPart1")
-            writer.write("## Day $i\n" +
+            val timeForPart1 = totalTimePart1 / averageNum.toDouble()
+
+            println("Day ${index + 1}, Part one: $resultPart1 in $timeForPart1 over $averageNum retries")
+            writer.write("## Day $dayNumber\n" +
                     "### Part one\n" +
                     "\n" +
-                    "Result: $partOne \\\n" +
+                    "Result: $resultPart1 \\\n" +
                     "Time: $timeForPart1\n")
             sumTime += timeForPart1
-            var partTwo: Long
-            val timeForPart2 = measureTime {
-                partTwo = daysArray[i - 1].processTextInputPartTwo("./inputFiles/Day${i}.txt")
+
+            var resultPart2: Long = 0
+            var totalTimePart2 = Duration.ZERO
+            repeat (averageNum) {
+                totalTimePart2 += measureTime {
+                    resultPart2 = day.processTextInputPartTwo("./inputFiles/Day$dayNumber.txt")
+                }
             }
-            println("Day $i, Part two: $partTwo in $timeForPart2")
+            val timeForPart2 = totalTimePart2 / averageNum.toDouble()
+            println("Day ${index + 1}, Part two: $resultPart2 in $timeForPart2  over $averageNum retries")
             writer.write("### Part two\n" +
                     "\n" +
-                    "Result: $partTwo \\\n" +
+                    "Result: $resultPart2 \\\n" +
                     "Time: $timeForPart2\n\n")
             sumTime += timeForPart2
         } catch (ex: Throwable) {
-            println("Error on day $i: $ex")
+            println("Error on day $dayNumber: $ex")
         }
     }
+    println("All runs completed. Total time: $sumTime")
 
     writer.write("Total time:\n" +
-            "$sumTime")
+            "$sumTime \\\n"+
+            "Each run was averaged over $averageNum runs\n\n")
+
+    writer.write("For Josy. Forever")
 
     writer.close()
 }
