@@ -6,7 +6,7 @@ import kotlin.time.Duration
 import kotlin.time.measureTime
 
 fun main() {
-    val daysArray: List<Day> = listOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6(), Day7())
+    val daysArray: List<Day> = listOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6(), Day7(), Day8())
 
     val results = File("./README.md")
     val averageNum = 1000
