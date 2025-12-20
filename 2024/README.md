@@ -4,84 +4,94 @@ By Liam
 ### Part one
 
 Result: 1506483 \
-Time: 471.871us
+Time: 519.142us
 ### Part two
 
 Result: 23126924 \
-Time: 321.371us
+Time: 362.273us
 
 ## Day 2
 ### Part one
 
 Result: 663 \
-Time: 241.049us
+Time: 248.839us
 ### Part two
 
 Result: 692 \
-Time: 288.132us
+Time: 301.005us
 
 ## Day 3
 ### Part one
 
 Result: 188192787 \
-Time: 246.153us
+Time: 219.622us
 ### Part two
 
 Result: 113965544 \
-Time: 341.623us
+Time: 344.181us
 
 ## Day 4
 ### Part one
 
 Result: 2468 \
-Time: 270.691us
+Time: 268.781us
 ### Part two
 
 Result: 1864 \
-Time: 341.731us
+Time: 345.339us
 
 ## Day 5
 ### Part one
 
 Result: 4569 \
-Time: 538.283us
+Time: 533.476us
 ### Part two
 
 Result: 6456 \
-Time: 1.804055ms
+Time: 1.916478ms
 
 ## Day 6
 ### Part one
 
 Result: 5404 \
-Time: 117.279us
+Time: 130.529us
 ### Part two
 
 Result: 1984 \
-Time: 341.523495ms
+Time: 395.134638ms
 
 ## Day 7
 ### Part one
 
 Result: 538191549061 \
-Time: 755.225us
+Time: 792.603us
 ### Part two
 
 Result: 34612812972206 \
-Time: 22.489682ms
+Time: 23.690055ms
 
 ## Day 8
 ### Part one
 
 Result: 400 \
-Time: 81.76us
+Time: 86.372us
 ### Part two
 
 Result: 1280 \
-Time: 82.848us
+Time: 76.195us
+
+## Day 9
+### Part one
+
+Result: 6154342787400 \
+Time: 824.067us
+### Part two
+
+Result: 6183632723350 \
+Time: 65.411929ms
 
 Total time:
-369.915248ms \
+491.205524ms \
 Each run was averaged over 1000 runs
 
 For Josy. Forever
