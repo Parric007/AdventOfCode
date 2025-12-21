@@ -2,66 +2,56 @@ package main
 
 import java.io.File
 
+@Suppress("DuplicatedCode")
 class Day6 : Day {
+    private val dx = intArrayOf(0, 1, 0, -1)
+    private val dy = intArrayOf(-1, 0, 1, 0)
+
     override fun processTextInputPartOne(filePath: String): Long {
-        return getAllVisitedTiles(filePath).sumOf { subList -> subList.count {it} }.toLong()
-    }
-
-    private fun getAllVisitedTiles(filePath: String): List<BooleanArray> {
         val lines = File(filePath).readLines()
-        val xDimension = lines[0].length
-        val yDimension = lines.size
+        val height = lines.size
+        val width = lines[0].length
 
-        val visited = List(yDimension) {
-            BooleanArray(xDimension)
-        }
-        var currentX = 0 // x is index in subarray
-        var currentY = 0 // y is index in main array
-        var currentDirection = -1 to 0
+        val visited = Array(height) { BooleanArray(width) }
 
-        for ((i, row) in lines.withIndex()) {
-            for ((j, char) in row.withIndex()) {
-                if (char == '^') {
-                    currentX = j
-                    currentY = i
-                    visited[currentY][currentX] = true
+        var currentX = 0
+        var currentY = 0
+        var dir = 0
+        for (yy in 0 until height) {
+            for (xx in 0 until width) {
+                if (lines[yy][xx] == '^') {
+                    currentX = xx
+                    currentY = yy
                 }
             }
         }
+
+        visited[currentY][currentX] = true
 
         while (true) {
-            var (nextX, nextY) = currentX + currentDirection.second to currentY + currentDirection.first
-            if (nextX !in 0..< xDimension || nextY !in 0..< yDimension) {
-                return visited
+            var nx = currentX + dx[dir]
+            var ny = currentY + dy[dir]
+
+            if (nx !in 0 until width || ny !in 0 until height) break
+
+            while (lines[ny][nx] == '#') {
+                dir = (dir + 1) and 3
+                nx = currentX + dx[dir]
+                ny = currentY + dy[dir]
             }
 
-            while (lines[nextY][nextX] == '#') {
-                currentDirection = rotate90Degrees(currentDirection)
-                nextX = currentX + currentDirection.second
-                nextY = currentY + currentDirection.first
-            }
-            currentX = nextX
-            currentY = nextY
+            currentX = nx
+            currentY = ny
             visited[currentY][currentX] = true
         }
-    }
 
-    private fun rotate90Degrees(toRotate: Pair<Int, Int>): Pair<Int, Int> {
-        return toRotate.second to -toRotate.first
-    }
-
-    private fun getVisitedPositions(filePath: String): List<Pair<Int, Int>> {
-        val visitedGrid = getAllVisitedTiles(filePath)
-        val result = mutableListOf<Pair<Int, Int>>()
-
-        for (y in visitedGrid.indices) {
-            for (x in visitedGrid[y].indices) {
-                if (visitedGrid[y][x]) {
-                    result += x to y
-                }
+        var count = 0L
+        for (row in visited) {
+            for (cell in row) {
+                if (cell) count++
             }
         }
-        return result
+        return count
     }
 
     override fun processTextInputPartTwo(filePath: String): Long {
@@ -69,78 +59,93 @@ class Day6 : Day {
         val height = lines.size
         val width = lines[0].length
 
-        val directions = listOf(
-            -1 to 0,
-            0 to 1,
-            1 to 0,
-            0 to -1
-        )
-
-        fun dirIndex(dir: Pair<Int, Int>) = directions.indexOf(dir)
         var startX = 0
         var startY = 0
-        val startDirection = -1 to 0
 
-        for ((y, row) in lines.withIndex()) {
-            for ((x, c) in row.withIndex()) {
-                if (c == '^') {
+        for (y in 0 until height) {
+            for (x in 0 until width) {
+                if (lines[y][x] == '^') {
                     startX = x
                     startY = y
                 }
             }
         }
 
-        fun createsLoopWithObstacleAt(blockX: Int, blockY: Int): Boolean {
+        val visitedPositions = mutableListOf<Int>()
+        run {
+            val visited = Array(height) { BooleanArray(width) }
             var x = startX
             var y = startY
-            var dir = startDirection
-
-            val visited = Array(height) {
-                Array(width) { BooleanArray(4) }
-            }
-            visited[y][x][dirIndex(dir)] = true
+            var dir = 0
+            visited[y][x] = true
+            visitedPositions.add(y * width + x)
 
             while (true) {
-                var nextX = x + dir.second
-                var nextY = y + dir.first
-                if (nextX !in 0 until width || nextY !in 0 until height) {
-                    return false
+                var nx = x + dx[dir]
+                var ny = y + dy[dir]
+                if (nx !in 0 until width || ny !in 0 until height) break
+
+                while (lines[ny][nx] == '#') {
+                    dir = (dir + 1) and 3
+                    nx = x + dx[dir]
+                    ny = y + dy[dir]
                 }
 
-                fun isWall(nx: Int, ny: Int): Boolean =
-                    lines[ny][nx] == '#' || (nx == blockX && ny == blockY)
-                while (isWall(nextX, nextY)) {
-                    dir = rotate90Degrees(dir)
-                    nextX = x + dir.second
-                    nextY = y + dir.first
+                x = nx
+                y = ny
+                if (!visited[y][x]) {
+                    visited[y][x] = true
+                    visitedPositions.add(y * width + x)
                 }
-
-                x = nextX
-                y = nextY
-
-                val d = dirIndex(dir)
-
-                if (visited[y][x][d]) {
-                    return true
-                }
-
-                visited[y][x][d] = true
             }
         }
 
+        val visited = Array(height) { IntArray(width) }
         var loopCount = 0
-        val candidates = getVisitedPositions(filePath)
-        for ((x, y) in candidates) {
+
+        fun createsLoop(blockX: Int, blockY: Int): Boolean {
+            var x = startX
+            var y = startY
+            var dir = 0
+
+            for (row in visited) row.fill(0)
+
+            visited[y][x] = 1 shl 0
+
+            while (true) {
+                var nx = x + dx[dir]
+                var ny = y + dy[dir]
+
+                if (nx !in 0 until width || ny !in 0 until height) return false
+
+                while (lines[ny][nx] == '#' || (nx == blockX && ny == blockY)) {
+                    dir = (dir + 1) and 3
+                    nx = x + dx[dir]
+                    ny = y + dy[dir]
+                }
+
+                x = nx
+                y = ny
+
+                val bit = 1 shl dir
+                if ((visited[y][x] and bit) != 0) return true
+                visited[y][x] = visited[y][x] or bit
+            }
+        }
+
+        for (pos in visitedPositions) {
+            val x = pos % width
+            val y = pos / width
+
             if (x == startX && y == startY) continue
             if (lines[y][x] != '.') continue
 
-            if (createsLoopWithObstacleAt(x, y)) {
+            if (createsLoop(x, y)) {
                 loopCount++
             }
         }
 
         return loopCount.toLong()
     }
-
 
 }
