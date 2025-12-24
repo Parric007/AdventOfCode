@@ -59,5 +59,5 @@ class Day10: Day {
         return result
     }
 
-    data class Point(val x: Int, val y: Int)
+    private data class Point(val x: Int, val y: Int)
 }

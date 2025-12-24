@@ -47,7 +47,7 @@ class Day8: Day {
         return positionOfAntiNodes.size.toLong()
     }
 
-    data class Point(val x: Int, val y: Int)
+    private data class Point(val x: Int, val y: Int)
 
     private fun buildFrequencyMap(grid: List<String>): Map<Char, MutableList<Point>> {
         val frequenciesMap = mutableMapOf<Char, MutableList<Point>>()
