@@ -114,7 +114,7 @@ class Day9 : Day {
         return checksum
     }
 
-    sealed class Segment {
+    private sealed class Segment {
         data class File(val id: Int, val size: Int) : Segment()
         data class Free(val size: Int) : Segment()
     }

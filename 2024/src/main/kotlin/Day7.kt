@@ -20,7 +20,7 @@ class Day7 : Day {
         }
     }
 
-    data class Equation(
+    private data class Equation(
         val result: Long,
         val terms: LongArray,
     ) {

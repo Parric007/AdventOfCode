@@ -4,124 +4,134 @@ By Liam
 ### Part one
 
 Result: 1506483 \
-Time: 458.143us
+Time: 532.786us
 ### Part two
 
 Result: 23126924 \
-Time: 317.245us
+Time: 393.595us
 
 ## Day 2
 ### Part one
 
 Result: 663 \
-Time: 243.141us
+Time: 290.234us
 ### Part two
 
 Result: 692 \
-Time: 292.559us
+Time: 289.819us
 
 ## Day 3
 ### Part one
 
 Result: 188192787 \
-Time: 227.563us
+Time: 227.862us
 ### Part two
 
 Result: 113965544 \
-Time: 329.299us
+Time: 355.768us
 
 ## Day 4
 ### Part one
 
 Result: 2468 \
-Time: 270.208us
+Time: 292.813us
 ### Part two
 
 Result: 1864 \
-Time: 344.163us
+Time: 363.419us
 
 ## Day 5
 ### Part one
 
 Result: 4569 \
-Time: 539.68us
+Time: 584.047us
 ### Part two
 
 Result: 6456 \
-Time: 1.794753ms
+Time: 1.886413ms
 
 ## Day 6
 ### Part one
 
 Result: 5404 \
-Time: 105.879us
+Time: 109.796us
 ### Part two
 
 Result: 1984 \
-Time: 153.073089ms
+Time: 84.817666ms
 
 ## Day 7
 ### Part one
 
 Result: 538191549061 \
-Time: 792.884us
+Time: 765.608us
 ### Part two
 
 Result: 34612812972206 \
-Time: 22.156314ms
+Time: 22.121587ms
 
 ## Day 8
 ### Part one
 
 Result: 400 \
-Time: 82.68us
+Time: 95.706us
 ### Part two
 
 Result: 1280 \
-Time: 84.794us
+Time: 90.136us
 
 ## Day 9
 ### Part one
 
 Result: 6154342787400 \
-Time: 865.008us
+Time: 881.203us
 ### Part two
 
 Result: 6183632723350 \
-Time: 66.056663ms
+Time: 66.093564ms
 
 ## Day 10
 ### Part one
 
 Result: 638 \
-Time: 158.344us
+Time: 152.987us
 ### Part two
 
 Result: 1289 \
-Time: 113.989us
+Time: 112.087us
 
 ## Day 11
 ### Part one
 
 Result: 203228 \
-Time: 365.89us
+Time: 388.891us
 ### Part two
 
 Result: 240884656550923 \
-Time: 8.248285ms
+Time: 8.412080ms
 
 ## Day 12
 ### Part one
 
 Result: 1471452 \
-Time: 1.495510ms
+Time: 1.488413ms
 ### Part two
 
 Result: 863366 \
-Time: 6.105us
+Time: 5.866us
+
+## Day 13
+### Part one
+
+Result: 37680 \
+Time: 292.389us
+### Part two
+
+Result: 87550094242995 \
+Time: 282.76us
 
 Total time:
-258.422188ms \
+191.327495ms \
 Each run was averaged over 1000 runs
 
 For Josy. Forever
