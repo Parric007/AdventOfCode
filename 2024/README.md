@@ -4,164 +4,164 @@ By Liam
 ### Part one
 
 Result: 1506483 \
-Time: 542.537us
+Time: 470.072us
 ### Part two
 
 Result: 23126924 \
-Time: 335.751us
+Time: 318.555us
 
 ## Day 2
 ### Part one
 
 Result: 663 \
-Time: 283.833us
+Time: 230.026us
 ### Part two
 
 Result: 692 \
-Time: 329.883us
+Time: 276.398us
 
 ## Day 3
 ### Part one
 
 Result: 188192787 \
-Time: 233.837us
+Time: 234.102us
 ### Part two
 
 Result: 113965544 \
-Time: 363.269us
+Time: 328.229us
 
 ## Day 4
 ### Part one
 
 Result: 2468 \
-Time: 279.034us
+Time: 254.85us
 ### Part two
 
 Result: 1864 \
-Time: 380.585us
+Time: 327.634us
 
 ## Day 5
 ### Part one
 
 Result: 4569 \
-Time: 561.415us
+Time: 515.095us
 ### Part two
 
 Result: 6456 \
-Time: 1.993545ms
+Time: 1.780251ms
 
 ## Day 6
 ### Part one
 
 Result: 5404 \
-Time: 119.025us
+Time: 110.529us
 ### Part two
 
 Result: 1984 \
-Time: 88.626372ms
+Time: 83.563459ms
 
 ## Day 7
 ### Part one
 
 Result: 538191549061 \
-Time: 767.196us
+Time: 730.883us
 ### Part two
 
 Result: 34612812972206 \
-Time: 21.527428ms
+Time: 21.437516ms
 
 ## Day 8
 ### Part one
 
 Result: 400 \
-Time: 85.381us
+Time: 80.601us
 ### Part two
 
 Result: 1280 \
-Time: 86.393us
+Time: 87.429us
 
 ## Day 9
 ### Part one
 
 Result: 6154342787400 \
-Time: 837.463us
+Time: 816.979us
 ### Part two
 
 Result: 6183632723350 \
-Time: 338.537514ms
+Time: 63.966252ms
 
 ## Day 10
 ### Part one
 
 Result: 638 \
-Time: 1.917871ms
+Time: 136.043us
 ### Part two
 
 Result: 1289 \
-Time: 1.655435ms
+Time: 111.852us
 
 ## Day 11
 ### Part one
 
 Result: 203228 \
-Time: 2.855402ms
+Time: 350.283us
 ### Part two
 
 Result: 240884656550923 \
-Time: 92.981198ms
+Time: 7.856277ms
 
 ## Day 12
 ### Part one
 
 Result: 1471452 \
-Time: 16.514765ms
+Time: 1.468646ms
 ### Part two
 
 Result: 863366 \
-Time: 46.255us
+Time: 6.218us
 
 ## Day 13
 ### Part one
 
 Result: 37680 \
-Time: 2.893013ms
+Time: 293.872us
 ### Part two
 
 Result: 87550094242995 \
-Time: 1.788692ms
+Time: 273.756us
 
 ## Day 14
 ### Part one
 
 Result: 224969976 \
-Time: 600.537us
+Time: 153.498us
 ### Part two
 
 Result: 7892 \
-Time: 185.116766ms
+Time: 67.027992ms
 
 ## Day 15
 ### Part one
 
 Result: 1415498 \
-Time: 437.399us
+Time: 425.938us
 ### Part two
 
 Result: 1432898 \
-Time: 1.591520ms
+Time: 1.605368ms
 
 ## Day 16
 ### Part one
 
 Result: 91464 \
-Time: 5.762182ms
+Time: 5.573392ms
 ### Part two
 
 Result: 494 \
-Time: 125ns
+Time: 132ns
 
 Total time:
-770.051621ms \
+260.812127ms \
 Each run was averaged over 1000 runs
 
 For Josy. Forever
