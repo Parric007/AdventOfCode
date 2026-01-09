@@ -4,104 +4,114 @@ By Liam
 ### Part one
 
 Result: 138 \
-Time: 76.449us
+Time: 80.936us
 ### Part two
 
 Result: 1771 \
-Time: 49.369us
+Time: 52.169us
 
 ## Day 2
 ### Part one
 
 Result: 1598415 \
-Time: 205.293us
+Time: 217.876us
 ### Part two
 
 Result: 3812909 \
-Time: 138.237us
+Time: 144.642us
 
 ## Day 3
 ### Part one
 
 Result: 2565 \
-Time: 241.075us
+Time: 216.95us
 ### Part two
 
 Result: 2639 \
-Time: 257.259us
+Time: 262.88us
 
 ## Day 4
 ### Part one
 
 Result: 282749 \
-Time: 22.464603ms
+Time: 23.590160ms
 ### Part two
 
 Result: 9962624 \
-Time: 105.588477ms
+Time: 107.041212ms
 
 ## Day 5
 ### Part one
 
 Result: 238 \
-Time: 306.967us
+Time: 320.394us
 ### Part two
 
 Result: 69 \
-Time: 158.607us
+Time: 168.827us
 
 ## Day 6
 ### Part one
 
 Result: 400410 \
-Time: 11.026860ms
+Time: 11.761355ms
 ### Part two
 
 Result: 15343601 \
-Time: 10.886369ms
+Time: 10.261344ms
 
 ## Day 7
 ### Part one
 
 Result: 16076 \
-Time: 439us
+Time: 448.831us
 ### Part two
 
 Result: 2797 \
-Time: 362.877us
+Time: 386.47us
 
 ## Day 8
 ### Part one
 
 Result: 1342 \
-Time: 66.506us
+Time: 75.268us
 ### Part two
 
 Result: 2074 \
-Time: 64.219us
+Time: 66.124us
 
 ## Day 9
 ### Part one
 
 Result: 251 \
-Time: 421.97us
+Time: 443.575us
 ### Part two
 
 Result: 898 \
-Time: 590.712us
+Time: 616.186us
 
 ## Day 10
 ### Part one
 
 Result: 252594 \
-Time: 2.885989ms
+Time: 2.941429ms
 ### Part two
 
 Result: 3579328 \
-Time: 40.237816ms
+Time: 40.694878ms
+
+## Day 11
+### Part one
+
+Result: hxbxxyzz \
+Time: 141.711us
+### Part two
+
+Result: hxcaabcc \
+Time: 4.008876ms
 
 Total time:
-196.468654ms \
+203.942093ms \
 Each run was averaged over 1000 runs
 
 For Josy. Forever
