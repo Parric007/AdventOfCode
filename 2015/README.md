@@ -4,134 +4,144 @@ By Liam
 ### Part one
 
 Result: 138 \
-Time: 82.312us
+Time: 81.141us
 ### Part two
 
 Result: 1771 \
-Time: 52.371us
+Time: 53.257us
 
 ## Day 2
 ### Part one
 
 Result: 1598415 \
-Time: 227.799us
+Time: 220.467us
 ### Part two
 
 Result: 3812909 \
-Time: 149.794us
+Time: 144.566us
 
 ## Day 3
 ### Part one
 
 Result: 2565 \
-Time: 215.612us
+Time: 221.755us
 ### Part two
 
 Result: 2639 \
-Time: 272.726us
+Time: 260.133us
 
 ## Day 4
 ### Part one
 
 Result: 282749 \
-Time: 23.381045ms
+Time: 23.381743ms
 ### Part two
 
 Result: 9962624 \
-Time: 105.475500ms
+Time: 124.820707ms
 
 ## Day 5
 ### Part one
 
 Result: 238 \
-Time: 319.881us
+Time: 317.718us
 ### Part two
 
 Result: 69 \
-Time: 172.033us
+Time: 172.313us
 
 ## Day 6
 ### Part one
 
 Result: 400410 \
-Time: 8.591533ms
+Time: 8.523896ms
 ### Part two
 
 Result: 15343601 \
-Time: 10.304229ms
+Time: 10.829112ms
 
 ## Day 7
 ### Part one
 
 Result: 16076 \
-Time: 459.354us
+Time: 456.885us
 ### Part two
 
 Result: 2797 \
-Time: 379.502us
+Time: 381.281us
 
 ## Day 8
 ### Part one
 
 Result: 1342 \
-Time: 67.916us
+Time: 67.982us
 ### Part two
 
 Result: 2074 \
-Time: 68.108us
+Time: 71.509us
 
 ## Day 9
 ### Part one
 
 Result: 251 \
-Time: 443.971us
+Time: 439.529us
 ### Part two
 
 Result: 898 \
-Time: 671.239us
+Time: 617.801us
 
 ## Day 10
 ### Part one
 
 Result: 252594 \
-Time: 3.104977ms
+Time: 2.948481ms
 ### Part two
 
 Result: 3579328 \
-Time: 43.531255ms
+Time: 41.241044ms
 
 ## Day 11
 ### Part one
 
 Result: hxbxxyzz \
-Time: 147.261us
+Time: 141.907us
 ### Part two
 
 Result: hxcaabcc \
-Time: 4.209483ms
+Time: 4.069392ms
 
 ## Day 12
 ### Part one
 
 Result: 156366 \
-Time: 159.154us
+Time: 145.824us
 ### Part two
 
 Result: 96852 \
-Time: 211.757us
+Time: 208.692us
 
 ## Day 13
 ### Part one
 
 Result: 733 \
-Time: 106.284us
+Time: 106.056us
 ### Part two
 
 Result: 725 \
-Time: 461.779us
+Time: 457.384us
+
+## Day 14
+### Part one
+
+Result: 2696 \
+Time: 36.714us
+### Part two
+
+Result: 1084 \
+Time: 194.521us
 
 Total time:
-203.266875ms \
+220.611810ms \
 Each run was averaged over 1000 runs
 
 For Josy. Forever
